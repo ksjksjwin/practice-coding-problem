@@ -17,12 +17,13 @@ Copyright © 2020 LeetCode
 #         self.next = next
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
+        #Initialize with Null value for first element of reverse
         prev = None
 
         while head:
-            curr = head
-            head = head.next
-            curr.next = prev
-            prev = curr
+            curr = head #copy head to 'curr'
+            head = head.next #move 'head'
+            curr.next = prev #reverse occur with 'curr'
+            prev = curr #copy 'curr' to prev to keep save the reversed Linked List
 
         return prev
