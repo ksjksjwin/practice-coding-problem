@@ -17,25 +17,27 @@ Output: 4
 Copyright © 2020 LeetCode
 
 '''
+#from collections import defaultdict
+
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
+        #Using bit manipulation of XOR --> a^0 = a , a^a = 0
+        #Space memory(1)
 
-        hashtable = dict()
+        res = 0
 
-        for elem in nums:
-            if elem not in hashtable.keys():
-                hashtable[elem] = 1
-            else:
-                hashtable[elem] += 1
-
-        for elem in nums:
-            if hashtable[elem] == 1:
-                return elem
+        for num in nums:
+            res^=num
+        return res
 
         '''
-        for elem in nums:
-            if nums.count(elem) > 1:
-                continue
-            else:
-                return elem
+        #using dict -> space memory(n)
+        numDict = defaultdict(int)
+
+        for num in nums:
+            numDict[num] += 1
+
+        for key in numDict:
+            if numDict[key] == 1:
+                return key
         '''
